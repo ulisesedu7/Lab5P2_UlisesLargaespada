@@ -57,6 +57,7 @@ public class Principal extends javax.swing.JFrame {
     jTree_personajes = new javax.swing.JTree();
     jLabel_fullPersonajes = new javax.swing.JLabel();
     jPanel3 = new javax.swing.JPanel();
+    jLabel_emptyPersonajes1 = new javax.swing.JLabel();
 
     jMenuItem1.setText("Modificar");
     jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -290,15 +291,24 @@ public class Principal extends javax.swing.JFrame {
 
     jTabbedPane1.addTab("Listado de Personajes", jPanel2);
 
+    jLabel_emptyPersonajes1.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
+    jLabel_emptyPersonajes1.setText("En Construcción...");
+
     javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
     jPanel3.setLayout(jPanel3Layout);
     jPanel3Layout.setHorizontalGroup(
       jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGap(0, 589, Short.MAX_VALUE)
+      .addGroup(jPanel3Layout.createSequentialGroup()
+        .addGap(199, 199, 199)
+        .addComponent(jLabel_emptyPersonajes1)
+        .addContainerGap(228, Short.MAX_VALUE))
     );
     jPanel3Layout.setVerticalGroup(
       jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGap(0, 429, Short.MAX_VALUE)
+      .addGroup(jPanel3Layout.createSequentialGroup()
+        .addGap(64, 64, 64)
+        .addComponent(jLabel_emptyPersonajes1)
+        .addContainerGap(341, Short.MAX_VALUE))
     );
 
     jTabbedPane1.addTab("Simulación de Batalla", jPanel3);
@@ -501,6 +511,7 @@ public class Principal extends javax.swing.JFrame {
   private javax.swing.JLabel jLabel8;
   private javax.swing.JLabel jLabel9;
   private javax.swing.JLabel jLabel_emptyPersonajes;
+  private javax.swing.JLabel jLabel_emptyPersonajes1;
   private javax.swing.JLabel jLabel_fullPersonajes;
   private javax.swing.JMenuItem jMenuItem1;
   private javax.swing.JMenuItem jMenuItem2;
