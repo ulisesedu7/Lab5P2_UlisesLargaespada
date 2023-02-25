@@ -352,19 +352,25 @@ public class Principal extends javax.swing.JFrame {
     DefaultTreeModel m = (DefaultTreeModel) jTree_personajes.getModel();
     DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m.getRoot();
     DefaultMutableTreeNode nodo_personaje = new DefaultMutableTreeNode(nuevoPersonaje.getUniverso());
-    
+
     DefaultMutableTreeNode universoPersonaje = new DefaultMutableTreeNode(nuevoPersonaje);
-    
+
     nodo_personaje.add(universoPersonaje);
     raiz.add(nodo_personaje);
     m.reload();
-    
+
     // Elementos en la lista de borrar o eliminar
-    DefaultListModel modelo = (DefaultListModel) jL_Personajes.getModel();
-    modelo.addElement(nuevoPersonaje);
-    
-    jL_Personajes.setModel(modelo);
-    
+    if (jL_Personajes.getSelectedIndex() == -1) {
+      DefaultListModel modeloLista = new DefaultListModel();
+      modeloLista.addElement(nuevoPersonaje);
+      jL_Personajes.setModel(modeloLista);
+    } else {
+      DefaultListModel modeloLista2 = (DefaultListModel) jL_Personajes.getModel();
+      modeloLista2.addElement(nuevoPersonaje);
+      jL_Personajes.setModel(modeloLista2);
+    }
+
+
   }//GEN-LAST:event_jButton1ActionPerformed
 
   private void jTabbedPane1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseEntered
