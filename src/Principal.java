@@ -20,6 +20,13 @@ public class Principal extends javax.swing.JFrame {
   // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   private void initComponents() {
 
+    jPP_menuPopUp = new javax.swing.JPopupMenu();
+    jMenuItem1 = new javax.swing.JMenuItem();
+    jMenuItem2 = new javax.swing.JMenuItem();
+    jD_ListaParaElOrDel = new javax.swing.JDialog();
+    jScrollPane1 = new javax.swing.JScrollPane();
+    jList1 = new javax.swing.JList<>();
+    jLabel12 = new javax.swing.JLabel();
     jTabbedPane1 = new javax.swing.JTabbedPane();
     jPanel4 = new javax.swing.JPanel();
     jLabel1 = new javax.swing.JLabel();
@@ -44,9 +51,67 @@ public class Principal extends javax.swing.JFrame {
     jT_agilidadMPersonaje = new javax.swing.JTextField();
     jT_puntosVidaPersonaje = new javax.swing.JTextField();
     jPanel2 = new javax.swing.JPanel();
+    jLabel_emptyPersonajes = new javax.swing.JLabel();
+    jTreePanel_personajes = new javax.swing.JScrollPane();
+    jTree_personajes = new javax.swing.JTree();
+    jLabel_fullPersonajes = new javax.swing.JLabel();
     jPanel3 = new javax.swing.JPanel();
 
+    jMenuItem1.setText("Modificar");
+    jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jMenuItem1ActionPerformed(evt);
+      }
+    });
+    jPP_menuPopUp.add(jMenuItem1);
+
+    jMenuItem2.setText("Eliminar");
+    jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jMenuItem2ActionPerformed(evt);
+      }
+    });
+    jPP_menuPopUp.add(jMenuItem2);
+
+    jList1.setModel(new javax.swing.AbstractListModel<String>() {
+      String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+      public int getSize() { return strings.length; }
+      public String getElementAt(int i) { return strings[i]; }
+    });
+    jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+    jScrollPane1.setViewportView(jList1);
+
+    jLabel12.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+    jLabel12.setText("Seleccione el elemento para modificarlo");
+
+    javax.swing.GroupLayout jD_ListaParaElOrDelLayout = new javax.swing.GroupLayout(jD_ListaParaElOrDel.getContentPane());
+    jD_ListaParaElOrDel.getContentPane().setLayout(jD_ListaParaElOrDelLayout);
+    jD_ListaParaElOrDelLayout.setHorizontalGroup(
+      jD_ListaParaElOrDelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(jD_ListaParaElOrDelLayout.createSequentialGroup()
+        .addGap(44, 44, 44)
+        .addGroup(jD_ListaParaElOrDelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+          .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+          .addComponent(jScrollPane1))
+        .addContainerGap(98, Short.MAX_VALUE))
+    );
+    jD_ListaParaElOrDelLayout.setVerticalGroup(
+      jD_ListaParaElOrDelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(jD_ListaParaElOrDelLayout.createSequentialGroup()
+        .addGap(13, 13, 13)
+        .addComponent(jLabel12)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addContainerGap(112, Short.MAX_VALUE))
+    );
+
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+    jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+      public void mouseEntered(java.awt.event.MouseEvent evt) {
+        jTabbedPane1MouseEntered(evt);
+      }
+    });
 
     jLabel1.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
     jLabel1.setText("Bienvenido al Prototipo del juego de Marvel VS Capcom");
@@ -63,7 +128,7 @@ public class Principal extends javax.swing.JFrame {
         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
           .addComponent(jLabel1)
           .addComponent(jLabel2))
-        .addContainerGap(52, Short.MAX_VALUE))
+        .addContainerGap(87, Short.MAX_VALUE))
     );
     jPanel4Layout.setVerticalGroup(
       jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,7 +163,7 @@ public class Principal extends javax.swing.JFrame {
 
     jButton1.setBackground(new java.awt.Color(0, 204, 0));
     jButton1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-    jButton1.setForeground(new java.awt.Color(255, 255, 255));
+    jButton1.setForeground(new java.awt.Color(102, 255, 102));
     jButton1.setText("Agregar!");
     jButton1.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,7 +201,7 @@ public class Principal extends javax.swing.JFrame {
         .addGap(128, 128, 128)
         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
           .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-          .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE))
+          .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE))
         .addGap(63, 63, 63))
     );
     jPanel1Layout.setVerticalGroup(
@@ -183,15 +248,43 @@ public class Principal extends javax.swing.JFrame {
 
     jTabbedPane1.addTab("Agregar Personajes", jPanel1);
 
+    jLabel_emptyPersonajes.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
+    jLabel_emptyPersonajes.setText("No has agregado ningún personaje todavía...");
+
+    javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Personajes");
+    jTree_personajes.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+    jTree_personajes.addMouseListener(new java.awt.event.MouseAdapter() {
+      public void mouseClicked(java.awt.event.MouseEvent evt) {
+        jTree_personajesMouseClicked(evt);
+      }
+    });
+    jTreePanel_personajes.setViewportView(jTree_personajes);
+
+    jLabel_fullPersonajes.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
+    jLabel_fullPersonajes.setText("Esta es la lista de los personajes que tienes agregados!");
+
     javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
     jPanel2.setLayout(jPanel2Layout);
     jPanel2Layout.setHorizontalGroup(
       jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGap(0, 554, Short.MAX_VALUE)
+      .addGroup(jPanel2Layout.createSequentialGroup()
+        .addGap(67, 67, 67)
+        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addComponent(jLabel_fullPersonajes)
+          .addComponent(jLabel_emptyPersonajes)
+          .addComponent(jTreePanel_personajes, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
+        .addContainerGap(30, Short.MAX_VALUE))
     );
     jPanel2Layout.setVerticalGroup(
       jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGap(0, 429, Short.MAX_VALUE)
+      .addGroup(jPanel2Layout.createSequentialGroup()
+        .addGap(17, 17, 17)
+        .addComponent(jLabel_emptyPersonajes)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+        .addComponent(jLabel_fullPersonajes)
+        .addGap(20, 20, 20)
+        .addComponent(jTreePanel_personajes, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addContainerGap(147, Short.MAX_VALUE))
     );
 
     jTabbedPane1.addTab("Listado de Personajes", jPanel2);
@@ -200,7 +293,7 @@ public class Principal extends javax.swing.JFrame {
     jPanel3.setLayout(jPanel3Layout);
     jPanel3Layout.setHorizontalGroup(
       jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGap(0, 554, Short.MAX_VALUE)
+      .addGap(0, 589, Short.MAX_VALUE)
     );
     jPanel3Layout.setVerticalGroup(
       jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -247,7 +340,64 @@ public class Principal extends javax.swing.JFrame {
     
     // Confirmacion de haber agregado personajes
     JOptionPane.showMessageDialog(this, "¡Personaje agregado con Exito!");
+    
+    // Agregar personale a la lista
+    personajes.add(nuevoPersonaje);
+    
+    jt_nombrePersonaje.setText("");
+    jT_universoPersonaje.setText("");
+    jT_puntosVidaPersonaje.setText("");
+    jT_poderPersonaje.setText("");
+    jT_debilidadPersonaje.setText("");
+    jT_fuerzaPersonaje.setText("");
+    jT_agilidadMPersonaje.setText("");
+    jT_agilidadFPersonaje.setText("");
+    
+    // Luego de agregar se procede a agregar al arbol
+    DefaultListModel modelo = (DefaultListModel) jTree_personajes.getModel();
+    
+    modelo.addElement(nuevoPersonaje);
+    
   }//GEN-LAST:event_jButton1ActionPerformed
+
+  private void jTabbedPane1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseEntered
+    // TODO add your handling code here:
+    if (!personajes.isEmpty()) {
+      jLabel_emptyPersonajes.setVisible(false);
+      jLabel_fullPersonajes.setVisible(true);
+      jTreePanel_personajes.setVisible(true);
+    } else {
+      jLabel_fullPersonajes.setVisible(false);
+      jTreePanel_personajes.setVisible(false);
+    }
+  }//GEN-LAST:event_jTabbedPane1MouseEntered
+
+  // Evento para mostrar el popup Menu
+  private void jTree_personajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTree_personajesMouseClicked
+    // TODO add your handling code here:
+    if (evt.isMetaDown()) {
+      jPP_menuPopUp.show(jTreePanel_personajes, evt.getX(), evt.getY());
+    }
+  }//GEN-LAST:event_jTree_personajesMouseClicked
+
+  // Evento para action del mouse de ELIMINAR
+  private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    // TODO add your handling code here:
+    // Show menu to display the options
+    jD_ListaParaElOrDel.setModal(true);
+    jD_ListaParaElOrDel.pack();
+    jD_ListaParaElOrDel.setLocationRelativeTo(this);
+    jD_ListaParaElOrDel.setVisible(true);
+  }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+  // Evento para action del mouse de MODIFICAR
+  private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    // TODO add your handling code here:
+    jD_ListaParaElOrDel.setModal(true);
+    jD_ListaParaElOrDel.pack();
+    jD_ListaParaElOrDel.setLocationRelativeTo(this);
+    jD_ListaParaElOrDel.setVisible(true);
+  }//GEN-LAST:event_jMenuItem1ActionPerformed
 
   /**
    * @param args the command line arguments
@@ -286,9 +436,11 @@ public class Principal extends javax.swing.JFrame {
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JButton jButton1;
+  private javax.swing.JDialog jD_ListaParaElOrDel;
   private javax.swing.JLabel jLabel1;
   private javax.swing.JLabel jLabel10;
   private javax.swing.JLabel jLabel11;
+  private javax.swing.JLabel jLabel12;
   private javax.swing.JLabel jLabel2;
   private javax.swing.JLabel jLabel3;
   private javax.swing.JLabel jLabel4;
@@ -297,10 +449,17 @@ public class Principal extends javax.swing.JFrame {
   private javax.swing.JLabel jLabel7;
   private javax.swing.JLabel jLabel8;
   private javax.swing.JLabel jLabel9;
+  private javax.swing.JLabel jLabel_emptyPersonajes;
+  private javax.swing.JLabel jLabel_fullPersonajes;
+  private javax.swing.JList<String> jList1;
+  private javax.swing.JMenuItem jMenuItem1;
+  private javax.swing.JMenuItem jMenuItem2;
+  private javax.swing.JPopupMenu jPP_menuPopUp;
   private javax.swing.JPanel jPanel1;
   private javax.swing.JPanel jPanel2;
   private javax.swing.JPanel jPanel3;
   private javax.swing.JPanel jPanel4;
+  private javax.swing.JScrollPane jScrollPane1;
   private javax.swing.JTextField jT_agilidadFPersonaje;
   private javax.swing.JTextField jT_agilidadMPersonaje;
   private javax.swing.JTextField jT_debilidadPersonaje;
@@ -309,6 +468,8 @@ public class Principal extends javax.swing.JFrame {
   private javax.swing.JTextField jT_puntosVidaPersonaje;
   private javax.swing.JTextField jT_universoPersonaje;
   private javax.swing.JTabbedPane jTabbedPane1;
+  private javax.swing.JScrollPane jTreePanel_personajes;
+  private javax.swing.JTree jTree_personajes;
   private javax.swing.JTextField jt_nombrePersonaje;
   // End of variables declaration//GEN-END:variables
 
