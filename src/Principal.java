@@ -1,6 +1,7 @@
 
 import java.util.*;
 import javax.swing.*;
+import javax.swing.tree.*;
 
 public class Principal extends javax.swing.JFrame {
 
@@ -25,7 +26,7 @@ public class Principal extends javax.swing.JFrame {
     jMenuItem2 = new javax.swing.JMenuItem();
     jD_ListaParaElOrDel = new javax.swing.JDialog();
     jScrollPane1 = new javax.swing.JScrollPane();
-    jList1 = new javax.swing.JList<>();
+    jL_Personajes = new javax.swing.JList<>();
     jLabel12 = new javax.swing.JLabel();
     jTabbedPane1 = new javax.swing.JTabbedPane();
     jPanel4 = new javax.swing.JPanel();
@@ -73,13 +74,8 @@ public class Principal extends javax.swing.JFrame {
     });
     jPP_menuPopUp.add(jMenuItem2);
 
-    jList1.setModel(new javax.swing.AbstractListModel<String>() {
-      String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-      public int getSize() { return strings.length; }
-      public String getElementAt(int i) { return strings[i]; }
-    });
-    jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-    jScrollPane1.setViewportView(jList1);
+    jL_Personajes.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+    jScrollPane1.setViewportView(jL_Personajes);
 
     jLabel12.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
     jLabel12.setText("Seleccione el elemento para modificarlo");
@@ -102,7 +98,7 @@ public class Principal extends javax.swing.JFrame {
         .addComponent(jLabel12)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addContainerGap(112, Short.MAX_VALUE))
+        .addContainerGap(128, Short.MAX_VALUE))
     );
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -333,17 +329,16 @@ public class Principal extends javax.swing.JFrame {
     double agilidadFis = Double.parseDouble(jT_agilidadFPersonaje.getText());
     double agilidadMen = Double.parseDouble(jT_agilidadMPersonaje.getText());
     double puntosVida = Double.parseDouble(jT_puntosVidaPersonaje.getText());
-    
+
     // Crear personaje
     Personaje nuevoPersonaje = new Personaje(nombre, poder, debilidad, universo, fuerza, agilidadFis, agilidadMen, puntosVida);
-    
-    
+
     // Confirmacion de haber agregado personajes
     JOptionPane.showMessageDialog(this, "¡Personaje agregado con Exito!");
-    
+
     // Agregar personale a la lista
     personajes.add(nuevoPersonaje);
-    
+
     jt_nombrePersonaje.setText("");
     jT_universoPersonaje.setText("");
     jT_puntosVidaPersonaje.setText("");
@@ -352,11 +347,23 @@ public class Principal extends javax.swing.JFrame {
     jT_fuerzaPersonaje.setText("");
     jT_agilidadMPersonaje.setText("");
     jT_agilidadFPersonaje.setText("");
-    
+
     // Luego de agregar se procede a agregar al arbol
-    DefaultListModel modelo = (DefaultListModel) jTree_personajes.getModel();
+    DefaultTreeModel m = (DefaultTreeModel) jTree_personajes.getModel();
+    DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m.getRoot();
+    DefaultMutableTreeNode nodo_personaje = new DefaultMutableTreeNode(nuevoPersonaje.getUniverso());
     
+    DefaultMutableTreeNode universoPersonaje = new DefaultMutableTreeNode(nuevoPersonaje);
+    
+    nodo_personaje.add(universoPersonaje);
+    raiz.add(nodo_personaje);
+    m.reload();
+    
+    // Elementos en la lista de borrar o eliminar
+    DefaultListModel modelo = (DefaultListModel) jL_Personajes.getModel();
     modelo.addElement(nuevoPersonaje);
+    
+    jL_Personajes.setModel(modelo);
     
   }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -437,6 +444,7 @@ public class Principal extends javax.swing.JFrame {
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JButton jButton1;
   private javax.swing.JDialog jD_ListaParaElOrDel;
+  private javax.swing.JList<String> jL_Personajes;
   private javax.swing.JLabel jLabel1;
   private javax.swing.JLabel jLabel10;
   private javax.swing.JLabel jLabel11;
@@ -451,7 +459,6 @@ public class Principal extends javax.swing.JFrame {
   private javax.swing.JLabel jLabel9;
   private javax.swing.JLabel jLabel_emptyPersonajes;
   private javax.swing.JLabel jLabel_fullPersonajes;
-  private javax.swing.JList<String> jList1;
   private javax.swing.JMenuItem jMenuItem1;
   private javax.swing.JMenuItem jMenuItem2;
   private javax.swing.JPopupMenu jPP_menuPopUp;

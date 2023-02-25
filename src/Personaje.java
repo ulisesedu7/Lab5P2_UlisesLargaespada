@@ -88,7 +88,7 @@ public class Personaje {
 
   @Override
   public String toString() {
-    return "Personaje{" + "name=" + name + ", poder=" + poder + ", debilidad=" + debilidad + ", universo=" + universo + ", fuerza=" + fuerza + ", agilidadFisica=" + agilidadFisica + ", agilidadMental=" + agilidadMental + ", puntosVida=" + puntosVida + '}';
+    return name;
   }
   
 }
